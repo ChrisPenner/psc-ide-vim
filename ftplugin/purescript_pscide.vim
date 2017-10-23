@@ -197,10 +197,13 @@ if g:loaded_psc_ide_vim
 endif
 let g:loaded_psc_ide_vim = v:true
 
-augroup purescript_CompleteDone
-  au!
-  au CompleteDone * :call purescript#ide#import#completeDone()
-augroup END
+
+if g:psc_ide_auto_imports
+    augroup purescript_CompleteDone
+        au!
+        au CompleteDone * :call purescript#ide#import#completeDone()
+    augroup END
+endif
 
 " START ----------------------------------------------------------------------
 let s:psc_ide_server = v:null
